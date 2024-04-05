@@ -26,12 +26,14 @@ jobs:
       # - run: yarn nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
 
       # Cache node_modules
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
       - uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: "master"
 
       - run: git branch --track master origin/master
         if: ${{ github.event_name == 'pull_request' }}
