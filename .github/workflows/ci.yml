@@ -12,6 +12,8 @@ permissions:
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{secrets.NX_CLOUD_ACCESS_TOKEN}}
+
+variables:
   ${{ if eq(variables['Build.Reason'], 'PullRequest') }}:
     NX_BRANCH: $(System.PullRequest.PullRequestId)
   ${{ if ne(variables['Build.Reason'], 'PullRequest') }}:
