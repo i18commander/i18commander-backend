@@ -32,5 +32,5 @@ jobs:
         with:
           main-branch-name: "master"
 
-      - run: yarn nx-cloud record -- nx format:check
+      - run: yarn nx-cloud record nx format:check
       - run: yarn nx affected -t lint test build
