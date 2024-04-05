@@ -13,11 +13,6 @@ permissions:
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{secrets.NX_CLOUD_ACCESS_TOKEN}}
 
-variables:
-  ${{ if eq(variables['Build.Reason'], 'PullRequest') }}:
-    NX_BRANCH: $(System.PullRequest.PullRequestId)
-  ${{ if ne(variables['Build.Reason'], 'PullRequest') }}:
-    NX_BRANCH: $(Build.SourceBranchName)
 
 jobs:
   main:
@@ -38,6 +33,9 @@ jobs:
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
       - uses: nrwl/nx-set-shas@v4
+
+      - run: git branch --track master origin/master
+        if: ${{ github.event_name == 'pull_request' }}
 
       - run: yarn nx-cloud record -- nx format:check
       - run: yarn nx affected -t lint test build
