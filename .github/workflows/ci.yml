@@ -37,5 +37,5 @@ jobs:
       - run: git branch --track master origin/master
         if: ${{ github.event_name == 'pull_request' }}
 
-      - run: yarn nx-cloud record -- nx format:check
+      - run: yarn nx-cloud record nx format:check
       - run: yarn nx affected -t lint test build
