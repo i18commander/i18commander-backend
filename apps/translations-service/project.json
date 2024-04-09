@@ -1,7 +1,7 @@
 {
-  "name": "translations-manager-service",
+  "name": "translations-service",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/translations-manager-service/src",
+  "sourceRoot": "apps/translations-service/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -9,14 +9,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "translations-manager-service:build"
+        "buildTarget": "translations-service:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "translations-manager-service:build:development"
+          "buildTarget": "translations-service:build:development"
         },
         "production": {
-          "buildTarget": "translations-manager-service:build:production"
+          "buildTarget": "translations-service:build:production"
         }
       }
     }
