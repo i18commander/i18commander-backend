@@ -4,13 +4,21 @@
   "projectType": "application",
   "implicitDependencies": ["translations-service"],
   "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx run translations-service:serve:production",
+        "readyWhen": "Application is running"
+      }
+    },
     "e2e": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
       "options": {
         "jestConfig": "apps/translations-service-e2e/jest.config.ts",
         "passWithNoTests": true
-      }
+      },
+      "dependsOn": ["serve"]
     }
   }
 }
