@@ -19,6 +19,13 @@
           "buildTarget": "translations-service:build:production"
         }
       }
+    },
+    "test-e2e": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/translations-service/jest-e2e.config.ts",
+        "passWithNoTests": true
+      }
     }
   }
 }
