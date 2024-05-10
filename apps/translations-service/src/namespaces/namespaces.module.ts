@@ -4,6 +4,6 @@ import { NamespacesService } from './namespaces.service';
 
 @Module({
   controllers: [NamespacesController],
-  providers: [NamespacesService]
+  providers: [NamespacesService],
 })
 export class NamespacesModule {}
